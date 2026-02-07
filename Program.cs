@@ -7,8 +7,7 @@ namespace Assignment1
   {
     public static long CalculatePower(long baseNumber, long exponent)
     {
-      int currentIteration;
-      int ExponentZeroResult;
+      int currentIteration, ExponentZeroResult;
       long result;
 
       ExponentZeroResult = 1;
@@ -40,10 +39,8 @@ namespace Assignment1
 
     public static int TransformNumber(int originalNumber)
     {
-      string numberAsString;
+      string numberAsString, resultAsString, withoutSecondDigit;
       char secondDigit;
-      string withoutSecondDigit;
-      string resultAsString;
       int transformedResult;
 
       numberAsString = originalNumber.ToString();
@@ -73,8 +70,7 @@ namespace Assignment1
 
     private static void ExecuteFirstTask()
     {
-      int baseNumber;
-      int exponent;
+      int baseNumber, exponent;
       long powerResult;
 
       Console.Write("Task 1: a^n \nInsert a: ");
@@ -89,8 +85,7 @@ namespace Assignment1
 
     private static void ExecuteSecondTask()
     {
-      int originalNumber;
-      int transformedResult;
+      int originalNumber, transformedResult;
 
       Console.Write("\nTask 2: Number Transformation \nInsert x (>= 100): ");
       originalNumber = int.Parse(Console.ReadLine());
