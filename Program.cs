@@ -2,19 +2,24 @@
 
 namespace Assignment1
 {
+ 
   public class PowerCalculator
   {
     public static long CalculatePower(long baseNumber, long exponent)
     {
-      int ExponentZeroResult = 1;
+      int currentIteration;
+      int ExponentZeroResult;
+      long result;
+
+      ExponentZeroResult = 1;
 
       if (exponent == 0) {
         return ExponentZeroResult;
       }
+      
+      result = baseNumber;
 
-      long result = baseNumber;
-
-      for (int currentIteration = 1; currentIteration < exponent; ++currentIteration) {
+      for (currentIteration = 1; currentIteration < exponent; ++currentIteration) {
         result *= baseNumber;
       }
 
@@ -24,22 +29,35 @@ namespace Assignment1
 
   public class NumberTransformer
   {
-    private int MinimumNumberLength = 3;
-    private int SecondDigitIndex = 1;
+    private static int MinimumNumberLength;
+    private static int SecondDigitIndex;
+
+    static NumberTransformer()
+    {
+      MinimumNumberLength = 3;
+      SecondDigitIndex = 1;
+    }
 
     public static int TransformNumber(int originalNumber)
     {
-      string numberAsString = originalNumber.ToString();
+      string numberAsString;
+      char secondDigit;
+      string withoutSecondDigit;
+      string resultAsString;
+      int transformedResult;
+
+      numberAsString = originalNumber.ToString();
 
       if (numberAsString.Length < MinimumNumberLength) {
         return originalNumber;
       }
 
-      char secondDigit = numberAsString[SecondDigitIndex];
-      string withoutSecondDigit = numberAsString.Remove(SecondDigitIndex, 1);
-
-      string resultAsString = withoutSecondDigit + secondDigit;
-      int transformedResult = int.Parse(resultAsString);
+      
+      secondDigit = numberAsString[SecondDigitIndex];
+      withoutSecondDigit = numberAsString.Remove(SecondDigitIndex, 1);
+      
+      resultAsString = withoutSecondDigit + secondDigit;
+      transformedResult = int.Parse(resultAsString);
 
       return transformedResult;
     }
@@ -55,26 +73,29 @@ namespace Assignment1
 
     private static void ExecuteFirstTask()
     {
-      Console.WriteLine("Task 1: a^n ");
+      int baseNumber;
+      int exponent;
+      long powerResult;
 
-      Console.Write("Insert a: ");
-      int baseNumber = int.Parse(Console.ReadLine());
+      Console.Write("Task 1: a^n \nInsert a: ");
+      baseNumber = int.Parse(Console.ReadLine());
 
       Console.Write("Insert n: ");
-      int exponent = int.Parse(Console.ReadLine());
+      exponent = int.Parse(Console.ReadLine());
 
-      long powerResult = PowerCalculator.CalculatePower(baseNumber, exponent);
+      powerResult = PowerCalculator.CalculatePower(baseNumber, exponent);
       Console.WriteLine("Result: " + powerResult);
     }
 
     private static void ExecuteSecondTask()
     {
-      Console.WriteLine("Task 2: Number Transformation ");
+      int originalNumber;
+      int transformedResult;
 
-      Console.Write("Insert x (>= 100): ");
-      int originalNumber = int.Parse(Console.ReadLine());
+      Console.Write("\nTask 2: Number Transformation \nInsert x (>= 100): ");
+      originalNumber = int.Parse(Console.ReadLine());
 
-      int transformedResult = NumberTransformer.TransformNumber(originalNumber);
+      transformedResult = NumberTransformer.TransformNumber(originalNumber);
       Console.WriteLine("Result: " + transformedResult);
     }
   }
