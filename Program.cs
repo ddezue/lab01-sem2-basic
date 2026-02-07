@@ -48,7 +48,6 @@ namespace Assignment1
       if (numberAsString.Length < MinimumNumberLength) {
         return originalNumber;
       }
-
       
       secondDigit = numberAsString[SecondDigitIndex];
       withoutSecondDigit = numberAsString.Remove(SecondDigitIndex, 1);
